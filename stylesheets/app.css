@@ -69,7 +69,7 @@ header img {
   border: 1px solid #3E4D2B;
   max-width: 400px;
   background-color: white;
-  margin: 5px;
+  margin: 16px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -78,10 +78,11 @@ header img {
 .parks .parkCards .card h3 {
   text-align: center;
   color: #3E4D2B;
+  padding: 16px 0px 8px 0px;
 }
 .parks .parkCards .card .description, .parks .parkCards .card .location {
   text-align: center;
-  padding: 5px 0px;
+  padding: 8px 16px;
 }
 .parks .parkCards .card .description {
   margin: 0px 5px;
@@ -90,15 +91,20 @@ header img {
   font-weight: bold;
 }
 .parks .parkCards .card .imageContainer {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 .parks .parkCards .card .imageContainer img {
-  max-width: 300px;
+  width: calc(100% - 16px);
+  margin: 8px;
+  border-radius: 5px;
 }
 .parks .parkCards .card ul {
   font-weight: bold;
   margin-bottom: 5px;
   margin-left: 5px;
+  padding: 8px 16px;
 }
 .parks .parkCards .card ul li {
   font-weight: normal;
@@ -116,6 +122,7 @@ header img {
 }
 .parks .parkCards .card .link {
   text-align: center;
+  padding: 8px 0px 16px 0px;
 }
 
 footer {
@@ -195,8 +202,11 @@ html {
   align-items: center;
 }
 .parks h2 {
+  position: sticky;
+  top: 0;
+  left: 0;
   text-align: center;
-  padding: 10px 0px;
+  padding: 16px 0px;
   width: 100vw;
   background-color: #3E4D2B;
   color: white;

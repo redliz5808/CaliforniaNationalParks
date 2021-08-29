@@ -1,87 +1,110 @@
 const cardsContainer = document.getElementById("parkCards");
 
-
 async function getData() {
   try {
-    const response = await fetch("https://developer.nps.gov/api/v1/parks?stateCode=CA&limit=12&api_key=dubXrvunnNJrzMYcwpIk2PHAzKFdFJw6gdedXzvr");
+    const response = await fetch(
+      "https://developer.nps.gov/api/v1/parks?stateCode=CA&limit=12&api_key=dubXrvunnNJrzMYcwpIk2PHAzKFdFJw6gdedXzvr"
+    );
     return response.json();
   } catch (error) {
     console.log(error);
   }
 }
 
-getData()
-  .then(data => {
-    const parks = data.data;
+function coordinateConverter(lat, long) {
+  let latitude = "";
+  let longitude = "";
 
-    function coordinateConverter(lat, long) {
-      let latitude = "";
-      let longitude = "";
+  if (lat < 0) {
+    latitude = (parseFloat(lat) * -1).toFixed(3) + " S";
+  } else {
+    latitude = parseFloat(lat).toFixed(3) + " N";
+  }
 
-      if(lat < 0) {
-        latitude = (parseFloat(lat) * -1).toFixed(3) + " S";
-      } else {
-        latitude = parseFloat(lat).toFixed(3) + " N";
-      }
+  if (long < 0) {
+    longitude = (parseFloat(long) * -1).toFixed(3) + " W";
+  } else {
+    longitude = parseFloat(long).toFixed(3) + " E";
+  }
 
-      if(long < 0) {
-        longitude = (parseFloat(long) * -1).toFixed(3) + " W";
-      } else {
-        longitude = parseFloat(long).toFixed(3) + " E";
-      }
+  return latitude + " " + longitude;
+}
 
-      return latitude + " " + longitude;
-    }
+function truncateString(string) {
+  if(string.length <= 150) {
+    return string;
+  }
+  return string.slice(0, 150) + "...";
+}
 
-    parks.map(park => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        
-        const title = document.createElement("h3");
-        title.innerHTML = park.fullName;
+function title(park) {
+  return `
+    <h3>${park.fullName}</h3>
+  `;
+}
 
-        const detailsContainer = document.createElement("div");
-        detailsContainer.classList.add("detailsContainer");
+function imageContainer(park) {
+  return `
+    <div class="imageContainer">
+      <img src=${park.images[0].url} alt=${park.fullName} />
+    </div>
+  `;
+}
 
-        const imageContainer = document.createElement("div");
-        imageContainer.classList.add("imageContainer");
-        const image = document.createElement("img");
-        image.setAttribute("src",park.images[0].url);
-        image.setAttribute("alt",park.fullName);
-        imageContainer.appendChild(image);
+function description(park) {
+  return `
+    <p class="description">${truncateString(park.description)}</p>
+  `;
+}
 
-        const description = document.createElement("p");
-        description.classList.add("description");
-        description.innerHTML = park.description;
+function coordinates(park) {
+  return `
+    <p class="location"><i class="fas fa-map-marked-alt"></i> ${coordinateConverter(
+      park.latitude,
+      park.longitude
+    )}</p>
+  `;
+}
 
-        const location = document.createElement("p");
-        location.classList.add("location");
-        location.innerHTML = `<i class="fas fa-map-marked-alt"></i> ` + coordinateConverter(park.latitude, park.longitude);
+function activities(park) {
+  return `
+    <ul>Popular Activities:
+    ${park.activities.slice(0, 3).map((activity) => {
+      return `<li>${activity.name}</li>`;
+    }).join("")}
+    </ul>
+  `;
+}
 
-        const activities = document.createElement("ul");
-        activities.classList.add("activites");
-        activities.innerHTML = "Popular Acitivies:";
-        park.activities.slice(0, 3).map(activity => {
-          let listItem = document.createElement("li");
-          listItem.innerHTML = activity.name;
-          activities.appendChild(listItem);
-        })
+function detailsContainer(park) {
+  return `
+    <div class="detailsContainer">
+      ${imageContainer(park)}
+      ${description(park)}
+      ${coordinates(park)}
+      ${activities(park)}
+    </div>
+  `;
+}
 
-        detailsContainer.appendChild(imageContainer);
-        detailsContainer.appendChild(description);
-        detailsContainer.appendChild(location);
-        detailsContainer.appendChild(activities);
+function websiteContainer(park) {
+  return `
+    <p class="link"><a href=${park.url} target="_blank"><i class="fas fa-globe"></i> Visit this park's website</a></p>
+  `;
+}
 
-        const websiteContainer = document.createElement("p");
-        websiteContainer.classList.add("link");
-        const website = document.createElement("a");
-        website.setAttribute("href", park.url);
-        website.innerHTML = `<i class="fas fa-globe"></i> Visit this park's website`
-        websiteContainer.appendChild(website);
+async function loadApp() {
+  const data = await getData();
+  const parks = data.data.map((park) => {
+    return `
+      <div class="card">
+        ${title(park)}
+        ${detailsContainer(park)}
+        ${websiteContainer(park)}
+      </div>
+    `;
+  }).join("");
+  cardsContainer.innerHTML += parks;
+}
 
-        card.appendChild(title);
-        card.appendChild(detailsContainer);
-        card.appendChild(websiteContainer);
-        cardsContainer.appendChild(card);
-    })
-  })
+loadApp();

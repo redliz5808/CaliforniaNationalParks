@@ -9,7 +9,7 @@
       border: 1px solid $darkGreen
       max-width: 400px
       background-color: white
-      margin: 5px
+      margin: 16px
       border-radius: 10px
       display: flex
       flex-direction: column
@@ -18,10 +18,11 @@
       h3
         text-align: center
         color: $darkGreen
+        padding: 16px 0px 8px 0px
 
       .description, .location
         text-align: center
-        padding: 5px 0px
+        padding: 8px 16px
       
       .description
         margin: 0px 5px
@@ -30,15 +31,20 @@
         font-weight: bold
             
       .imageContainer
+        display: flex
+        justify-content: center
         text-align: center
 
         img
-          max-width: 300px
+          width: calc(100% - 16px)
+          margin: 8px
+          border-radius: 5px
 
       ul
         font-weight: bold
         margin-bottom: 5px
         margin-left: 5px
+        padding: 8px 16px
 
         li
           font-weight: normal
@@ -55,5 +61,6 @@
 
       .link
         text-align: center
+        padding: 8px 0px 16px 0px
 
       
