@@ -1,0 +1,45 @@
+footer
+  display: flex
+  justify-content: space-between
+  background-color: $darkGreen
+  color: white
+  position: relative
+  .legal
+    margin-left: 5px
+    order: 1
+  .pageTitle
+    order: 2
+  .social
+    margin-right: 5px
+    order: 3
+    text-align: right
+  .copyright
+    margin-left: 5px
+    position: absolute
+    bottom: 0
+    left: 0
+  a
+    color: white
+    text-decoration: none
+    transition: 0.3s
+    &:hover
+      font-size: 18px
+  
+@media (max-width: 768px)
+  footer
+    flex-direction: column
+    align-items: center
+    position: static
+    .pageTitle
+      order: 1
+    a, .legal, .social
+      margin: 0
+    .legal
+      order: 2
+    .social
+      order: 3
+      text-align: center
+    .copyright
+      position: static
+      order: 4
+

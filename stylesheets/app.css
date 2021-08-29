@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+header {
+  position: relative;
+  overflow: hidden;
+  background-color: #3E4D2B;
+}
+header a {
+  position: absolute;
+  left: 150px;
+  top: 30px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  transition: 0.3s;
+}
+header a:hover {
+  font-size: 22px;
+}
+header img {
+  max-width: 100px;
+}
+
+#hero {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-image: url("../images/hero.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#hero .greeting {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 2px 2px #000;
+}
+#hero .greeting h1 {
+  font-size: 50px;
+  max-width: 90vw;
+}
+#hero .greeting h2 {
+  padding: 10px 0px;
+  font-size: 30px;
+  max-width: 90vw;
+}
+@media (max-width: 768px) {
+  #hero .greeting h1 {
+    font-size: 30px;
+  }
+  #hero .greeting h2 {
+    padding: 10px 0px;
+    font-size: 18px;
+  }
+}
+
+.parks .parkCards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1800px;
+}
+.parks .parkCards .card {
+  border: 1px solid #3E4D2B;
+  max-width: 400px;
+  background-color: white;
+  margin: 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.parks .parkCards .card h3 {
+  text-align: center;
+  color: #3E4D2B;
+}
+.parks .parkCards .card .description, .parks .parkCards .card .location {
+  text-align: center;
+  padding: 5px 0px;
+}
+.parks .parkCards .card .description {
+  margin: 0px 5px;
+}
+.parks .parkCards .card .location {
+  font-weight: bold;
+}
+.parks .parkCards .card .imageContainer {
+  text-align: center;
+}
+.parks .parkCards .card .imageContainer img {
+  max-width: 300px;
+}
+.parks .parkCards .card ul {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+.parks .parkCards .card ul li {
+  font-weight: normal;
+  margin-left: 20px;
+}
+.parks .parkCards .card a {
+  text-decoration: none;
+  color: #3E4D2B;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.parks .parkCards .card a:hover {
+  color: #71825B;
+  font-size: 18px;
+}
+.parks .parkCards .card .link {
+  text-align: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #3E4D2B;
+  color: white;
+  position: relative;
+}
+footer .legal {
+  margin-left: 5px;
+  order: 1;
+}
+footer .pageTitle {
+  order: 2;
+}
+footer .social {
+  margin-right: 5px;
+  order: 3;
+  text-align: right;
+}
+footer .copyright {
+  margin-left: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+footer a:hover {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    position: static;
+  }
+  footer .pageTitle {
+    order: 1;
+  }
+  footer a, footer .legal, footer .social {
+    margin: 0;
+  }
+  footer .legal {
+    order: 2;
+  }
+  footer .social {
+    order: 3;
+    text-align: center;
+  }
+  footer .copyright {
+    position: static;
+    order: 4;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.parks {
+  background-color: #71825B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.parks h2 {
+  text-align: center;
+  padding: 10px 0px;
+  width: 100vw;
+  background-color: #3E4D2B;
+  color: white;
+}
+
+/*# sourceMappingURL=app.css.map */

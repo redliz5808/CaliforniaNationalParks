@@ -1,0 +1,59 @@
+.parks
+  .parkCards
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    max-width: 1800px
+
+    .card
+      border: 1px solid $darkGreen
+      max-width: 400px
+      background-color: white
+      margin: 5px
+      border-radius: 10px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      
+      h3
+        text-align: center
+        color: $darkGreen
+
+      .description, .location
+        text-align: center
+        padding: 5px 0px
+      
+      .description
+        margin: 0px 5px
+
+      .location
+        font-weight: bold
+            
+      .imageContainer
+        text-align: center
+
+        img
+          max-width: 300px
+
+      ul
+        font-weight: bold
+        margin-bottom: 5px
+        margin-left: 5px
+
+        li
+          font-weight: normal
+          margin-left: 20px
+
+      a
+        text-decoration: none
+        color: $darkGreen
+        font-weight: bold
+        transition: 0.3s
+        &:hover
+          color: $lightGreen
+          font-size: 18px
+
+      .link
+        text-align: center
+
+      
